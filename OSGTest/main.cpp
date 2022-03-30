@@ -46,14 +46,14 @@ int main(int args, char** argu)
         geo->setUseVertexArrayObject(true);
         geo->setUseDisplayList(false);
         osg::ref_ptr<osg::Program> program = new osg::Program;
-        osg::ref_ptr<osg::Shader> vertexShader = new osg::Shader(osg::Shader::VERTEX, vertSource);
-        // bool ret = vertexShader->loadShaderSourceFromFile(std::string(ShaderDir) +
-        //                                                   std::string("test.vert"));
+        osg::ref_ptr<osg::Shader> vertexShader = new osg::Shader(osg::Shader::VERTEX);
+         bool ret = vertexShader->loadShaderSourceFromFile(std::string(ShaderDir) +
+                                                           std::string("test.vert"));
 
-        osg::ref_ptr<osg::Shader> fragShader = new osg::Shader(osg::Shader::FRAGMENT, fragSource);
-        // ret =
-        //     fragShader->loadShaderSourceFromFile(std::string(ShaderDir) +
-        //     std::string("test.frag"));
+        osg::ref_ptr<osg::Shader> fragShader = new osg::Shader(osg::Shader::FRAGMENT);
+         ret =
+             fragShader->loadShaderSourceFromFile(std::string(ShaderDir) +
+             std::string("test.frag"));
 
         program->addShader(vertexShader);
         program->addShader(fragShader);

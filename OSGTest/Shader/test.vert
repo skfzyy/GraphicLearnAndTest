@@ -1,12 +1,12 @@
 #version 330 core
 
 layout(location=0) in vec3 vertex;
-in vec4 osg_Color;
+layout(location = 1) in vec4 inColor;
 
 
-out vec3 color;
+out vec4 color;
 
 void main(){
-    color=osg_Color;
-    gl_Position=vertex;
+    color=inColor;
+    gl_Position=vec4(vertex,1.0);
 }
