@@ -1,0 +1,6 @@
+.idea/
+cmake-build*/
+SDK/Platform/
+CMakePre*
+out/
+.vs/
