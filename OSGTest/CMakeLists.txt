@@ -1,12 +1,18 @@
 cmake_minimum_required(VERSION 3.12)
 project(OSGTest)
 
+#preDefine
+add_definitions(-DCURRENT_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}\")
+message(STATUS ${CMAKE_CURRENT_SOURCE_DIR})
+
 #load SDK
 #osg
 if(G_DEBUG)
     set(OSG_LIB_PATH ${SDK_PLATFORM_PATH}/osg/debug)
-elseif(G_RELEASE)
+elseif(G_RElEASE)
     set(OSG_LIB_PATH ${SDK_PLATFORM_PATH}/osg/release)
+    message("release version")
+    message(STATUS ${OSG_LIB_PATH})
 elseif(G_RELWITHDEBUG)
     set(OSG_LIB_PATH ${SDK_PLATFORM_PATH}/osg/relWithDebug)
 endif()
@@ -31,7 +37,7 @@ endif()
 
 if(G_DEBUG)
     target_link_libraries(${PROJECT_NAME} PUBLIC osgDBd osgViewerd OpenThreadsd osgd osgGAd osgUtild)
-elseif(G_RELEASE)
+elseif(G_RElEASE)
     target_link_libraries(${PROJECT_NAME} PUBLIC osgDB osgViewer OpenThreads osg osgGA osgUtil)
 elseif(G_RELWITHDEBUG)
     target_link_libraries(${PROJECT_NAME} PUBLIC osgDBrd osgViewerrd OpenThreadsrd osgrd osgGArd osgUtilrd)
